@@ -1,23 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-rating
+      :users_data="USERS"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import { mapActions, mapGetters } from 'vuex'
+import VRating from '@/components/v-rating'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    VRating
   },
-};
+  computed: {
+    ...mapGetters([
+      'USERS'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'GET_USERS_FROM_API'
+    ])
+  },
+  mounted () {
+    this.GET_USERS_FROM_API()
+  }
+}
 </script>
 
 <style lang="scss">
+@import "assets/style/style";
+
 #app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,4 +46,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
