@@ -22,6 +22,4 @@ git commit -m 'deploy'
 # если вы публикуете по адресу https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
-cd -
-
-git push -f git@github.com:xkoootx.github.io/crmm_front_vue/.
+cd - git push -f git@github.com:xkoootx/crmm_front_vue.git master:gh-pages
