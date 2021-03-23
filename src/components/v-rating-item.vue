@@ -20,10 +20,10 @@
             <p class="text-header">Позиция в рейтинге:</p>
             <p class="text-content"
                v-if="this.isArrayReversed"
-            >{{ index }}</p>
+            >{{ (this.users_data.length + 1) - index }}</p>
             <p class="text-content"
                v-else
-            >{{ (this.users_data.length + 1) - index }}</p>
+            >{{ index }}</p>
           </div>
         </div>
         <div class="v-popup__footer">
