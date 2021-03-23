@@ -58,12 +58,6 @@ export default {
         return []
       }
     }
-    // isArrayReversed: {
-    //   type: Boolean,
-    //   default: () => {
-    //     return false
-    //   }
-    // }
   },
   methods: {
     sortByRatingToHigh () {
@@ -75,13 +69,6 @@ export default {
       sortLowBtn.classList.remove('displayNone')
       this.isArrayReversed = !this.isArrayReversed
     },
-    // flipArr () {
-    //   const a = [...this.users_data]
-    //   for (let i = 0; i < this.users_data.length; i++) {
-    //     a[i] = this[(this.length - 1) - i]
-    //   }
-    //   return a
-    // },
     sortByRatingToLow () {
       this.users_data.sort((a, b) => a.index > b.index ? 1 : -1)
       // this.users_data.reverse()
