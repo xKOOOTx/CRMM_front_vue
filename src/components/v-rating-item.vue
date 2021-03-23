@@ -9,8 +9,17 @@
         :users_data="this.users_data"
       >
         <div class="v-popup__main">
-          <div class="v-popup__avatar">
-            <img :src="this.row_data.avatar" alt="avatar">
+          <div class="v-popup__avatar" v-show="this.isArrayReversed">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="(this.users_data.length + 1) - index === 1" style="border: 4px solid #FDD835;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="(this.users_data.length + 1) - index === 2" style="border: 4px solid #90A4AE;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="(this.users_data.length + 1) - index === 3" style="border: 4px solid #795548;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="(this.users_data.length + 1) - index >= 4" style="border: 4px solid transparent">
+          </div>
+          <div class="v-popup__avatar" v-show="!this.isArrayReversed">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="index === 1" style="border: 4px solid #FDD835;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="index === 2" style="border: 4px solid #90A4AE;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="index === 3" style="border: 4px solid #795548;">
+            <img :src="this.row_data.avatar" alt="avatar" v-if="index >= 4" style="border: 4px solid transparent">
           </div>
           <div class="v-popup__text">
             <p class="text-header">Имя:</p>
@@ -21,9 +30,7 @@
             <p class="text-content"
                v-if="this.isArrayReversed"
             >{{ (this.users_data.length + 1) - index }}</p>
-            <p class="text-content"
-               v-else
-            >{{ index }}</p>
+            <p class="text-content" v-else >{{ index }}</p>
           </div>
         </div>
         <div class="v-popup__footer">
@@ -36,8 +43,17 @@
           <div class="rating__mainWrapper"
                @click="showPopupInfo"
           >
-            <div class="rating__mainWrapper_avatar">
-              <img :src=row_data.avatar alt="avatar">
+            <div class="rating__mainWrapper_avatar" v-show="this.isArrayReversed">
+              <img :src=row_data.avatar alt="avatar" v-if="(this.users_data.length + 1) - index === 1" style="border: 4px solid #FDD835;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="(this.users_data.length + 1) - index  === 2" style="border: 4px solid #90A4AE;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="(this.users_data.length + 1) - index  === 3" style="border: 4px solid #795548;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="(this.users_data.length + 1) - index  >= 4">
+            </div>
+            <div class="rating__mainWrapper_avatar" v-show="!this.isArrayReversed">
+              <img :src=row_data.avatar alt="avatar" v-if="index === 1" style="border: 4px solid #FDD835;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="index === 2" style="border: 4px solid #90A4AE;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="index === 3" style="border: 4px solid #795548;">
+              <img :src=row_data.avatar alt="avatar" v-else-if="index >= 4">
             </div>
             <div class="dFlex">
               <div class="rating__mainWrapper_text">
@@ -122,7 +138,6 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 4px solid #FDD835;
         border-radius: 50%;
         width: 60px;
         height: 60px;

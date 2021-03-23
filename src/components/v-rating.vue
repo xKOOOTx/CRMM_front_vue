@@ -47,6 +47,8 @@ export default {
   },
   data () {
     return {
+      usersArr: this.users_data,
+      isArrayReversed: this.isArrayReversed
     }
   },
   props: {
@@ -55,13 +57,13 @@ export default {
       default: () => {
         return []
       }
-    },
-    isArrayReversed: {
-      type: Boolean,
-      default: () => {
-        return false
-      }
     }
+    // isArrayReversed: {
+    //   type: Boolean,
+    //   default: () => {
+    //     return false
+    //   }
+    // }
   },
   methods: {
     sortByRatingToHigh () {
