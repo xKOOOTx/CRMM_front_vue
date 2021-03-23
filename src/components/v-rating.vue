@@ -28,6 +28,8 @@
           :key="index"
           :row_data="user"
           :index="index + 1"
+          :isArrayReversed="isArrayReversed"
+          :users_data="users_data"
         />
       </div>
     </div>
@@ -45,7 +47,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   props: {
@@ -53,6 +54,12 @@ export default {
       type: Array,
       default: () => {
         return []
+      }
+    },
+    isArrayReversed: {
+      type: Boolean,
+      default: () => {
+        return false
       }
     }
   },
@@ -64,6 +71,7 @@ export default {
       const sortLowBtn = document.getElementById('sortLowBtn')
       sortHighBtn.classList.add('displayNone')
       sortLowBtn.classList.remove('displayNone')
+      this.isArrayReversed = !this.isArrayReversed
     },
     // flipArr () {
     //   const a = [...this.users_data]
@@ -79,7 +87,7 @@ export default {
       const sortLowBtn = document.getElementById('sortLowBtn')
       sortLowBtn.classList.add('displayNone')
       sortHighBtn.classList.remove('displayNone')
-      this.users_data.index = this.users_data.length - 1
+      this.isArrayReversed = true
     }
   }
 }

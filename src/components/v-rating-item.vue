@@ -3,7 +3,10 @@
       <v-popup
         id="modal"
         v-if="isInfoPopupVisible"
+        :isArrayReversed="this.isArrayReversed"
         @closePopup="closeInfoPopup"
+        :row_data="row_data"
+        :users_data="this.users_data"
       >
         <div class="v-popup__main">
           <div class="v-popup__avatar">
@@ -15,7 +18,12 @@
             <p class="text-header">Баллы</p>
             <p class="text-content">{{ this.row_data.rating }}</p>
             <p class="text-header">Позиция в рейтинге:</p>
-            <p class="text-content">{{ index }}</p>
+            <p class="text-content"
+               v-if="this.isArrayReversed"
+            >{{ index }}</p>
+            <p class="text-content"
+               v-else
+            >{{ (this.users_data.length + 1) - index }}</p>
           </div>
         </div>
         <div class="v-popup__footer">
@@ -64,6 +72,12 @@ export default {
     },
     index: {
       type: Number
+    },
+    isArrayReversed: {
+      type: Boolean
+    },
+    users_data: {
+      type: Array
     }
   },
   data () {
